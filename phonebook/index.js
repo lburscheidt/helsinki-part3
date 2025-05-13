@@ -68,6 +68,7 @@ const generateId = () => {
 		persons.length > 0 ? Math.max(...persons.map((p) => Number(p.id))) : 0;
 	return String(maxId + 1);
 };
+/*3-6*/
 
 app.post("/api/persons", (request, response) => {
 	const body = request.body;
