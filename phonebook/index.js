@@ -40,6 +40,18 @@ app.get("/info", (request, response) => {
 		`Phonebook has info for ${persons.length} people<br>${new Date()}`,
 	);
 });
+
+/*3-3 */
+app.get("/api/persons/:id", (request, response) => {
+	const id = request.params.id;
+	const person = persons.find((person) => person.id === id);
+	if (person) {
+		response.json(person);
+	} else {
+		response.status(404).end();
+	}
+});
+
 /*3-1*/
 const PORT = 3001;
 app.listen(PORT);
