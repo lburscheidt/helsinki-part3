@@ -23,15 +23,24 @@ const persons = [
 		number: "39-23-6423122",
 	},
 ];
-
+/*3-1*/
 app.get("/", (request, response) => {
-	response.send("<h1>Hello World!</h1>");
+	response.send(
+		`<h1>Phonebook</h1><br><a href="http://localhost:3001/api/persons">Persons</a><br><a href="http://localhost:3001/info">Info</a>`,
+	);
 });
-
+/*3-1*/
 app.get("/api/persons", (request, response) => {
 	response.json(persons);
 });
 
+/*3-2*/
+app.get("/info", (request, response) => {
+	response.send(
+		`Phonebook has info for ${persons.length} people<br>${new Date()}`,
+	);
+});
+/*3-1*/
 const PORT = 3001;
 app.listen(PORT);
 console.log(`Server running on port ${PORT}`);
