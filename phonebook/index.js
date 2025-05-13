@@ -74,7 +74,13 @@ app.post("/api/persons", (request, response) => {
 
 	if (!body.name) {
 		return response.status(400).json({
-			error: "content missing",
+			error: "name missing",
+		});
+	}
+
+	if (!body.number) {
+		return response.status(400).json({
+			error: "number missing",
 		});
 	}
 
@@ -83,6 +89,12 @@ app.post("/api/persons", (request, response) => {
 		name: body.name,
 		number: body.number,
 	};
+
+	if (persons.filter((p) => p.name === person.name)) {
+		return response.status(400).json({
+			error: "already in phonebook",
+		});
+	}
 
 	persons = persons.concat(person);
 
